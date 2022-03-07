@@ -1,10 +1,22 @@
 import sys
 
+from bs4 import BeautifulSoup as bs
 
-class Tpoint:
-    """content downlader"""
-    def __init__(self):
-        self.bookName = sys.argv[1]
-        print(self.bookName)
-t
-t = Tpoint()
+from selenium import webdriver
+import os 
+
+
+DRIVER_LOC = f'{os.getcwd()}/asseset/geckodriver'
+driver = webdriver.Firefox(executable_path=DRIVER_LOC)
+driver.get("https://www.tutorialspoint.com/python/")
+alLinks = driver.find_elements_by_xpath("//a[@href]")
+
+VALID_LINKS = []
+
+for tmp in alLinks:
+    if "python" in str(tmp.get_attribute("href")) :
+        #VALID_LINKS.append(str(tmp.get_attribute("href"))
+        print(str(tmp.get_attribute("href")))
+
+
+        
