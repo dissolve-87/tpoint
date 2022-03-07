@@ -13,10 +13,17 @@ alLinks = driver.find_elements_by_xpath("//a[@href]")
 
 VALID_LINKS = []
 
+
+
 for tmp in alLinks:
-    if "python" in str(tmp.get_attribute("href")) :
+    if ".com/python/" in str(tmp.get_attribute("href")) :
         #VALID_LINKS.append(str(tmp.get_attribute("href"))
-        print(str(tmp.get_attribute("href")))
+        #print(str(tmp.get_attribute("href")))
+        VALID_LINKS.append(str(tmp.get_attribute("href")))
 
+result = []
+[result.append(x) for x in VALID_LINKS if x not in result] 
 
+for tm in result:
+    print(tm)
         
