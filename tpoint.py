@@ -6,56 +6,62 @@ from selenium.webdriver.common.by import By
 
 import os 
 
+class Tpoint:
+    def __init__(self):
 
-DRIVER_LOC = f'{os.getcwd()}/asseset/geckodriver'
-s=Service(DRIVER_LOC)
+        DRIVER_LOC = f'{os.getcwd()}/asseset/geckodriver'
+        s=Service(DRIVER_LOC)
+        self.driver = webdriver.Firefox(service=s)
 
-driver = webdriver.Firefox(service=s)
-driver.get("https://www.tutorialspoint.com/python")
-header = driver.find_element(By.ID,"header")
-driver.execute_script("""document.getElementById("header").remove()""", header)
-right_ads = driver.find_element(By.ID,"google-right-ads")
-driver.execute_script("""document.getElementById("google-right-ads").remove()""", right_ads)
+    def PageMaker(self):
+        self.driver.get("https://www.tutorialspoint.com/python")
+        header = self.driver.find_element(By.ID,"header")
+        self.driver.execute_script("""document.getElementById("header").remove()""", header)
+        right_ads = self.driver.find_element(By.ID,"google-right-ads")
+        self.driver.execute_script("""document.getElementById("google-right-ads").remove()""", right_ads)
 
-privacy_banner = driver.find_element(By.ID,"privacy-banner")
-driver.execute_script("""document.getElementById("privacy-banner").remove()""", privacy_banner)
+        privacy_banner = self.driver.find_element(By.ID,"privacy-banner")
+        self.driver.execute_script("""document.getElementById("privacy-banner").remove()""", privacy_banner)
 
-ebooks_grid = driver.find_element(By.ID,"ebooks_grid")
-driver.execute_script("""document.getElementById("ebooks_grid").remove()""", ebooks_grid)
+        ebooks_grid = self.driver.find_element(By.ID,"ebooks_grid")
+        self.driver.execute_script("""document.getElementById("ebooks_grid").remove()""", ebooks_grid)
 
-bottom_navigation = driver.find_element(By.ID,"bottom_navigation")
-driver.execute_script("""document.getElementById("bottom_navigation").remove()""", bottom_navigation)
+        bottom_navigation = self.driver.find_element(By.ID,"bottom_navigation")
+        self.driver.execute_script("""document.getElementById("bottom_navigation").remove()""", bottom_navigation)
 
-google_bottom_ads = driver.find_element(By.ID,"google-bottom-ads")
-driver.execute_script("""document.getElementById("google-bottom-ads").remove()""", google_bottom_ads)
+        google_bottom_ads = self.driver.find_element(By.ID,"google-bottom-ads")
+        self.driver.execute_script("""document.getElementById("google-bottom-ads").remove()""", google_bottom_ads)
 
-try:
-    google_top_ads = driver.find_element(By.ID,"google-top-ads")
-    driver.execute_script("""document.getElementById("google-top-ads").remove()""", google_top_ads)
-except Exception: pass
+        try:
+            google_top_ads = self.driver.find_element(By.ID,"google-top-ads")
+            self.driver.execute_script("""document.getElementById("google-top-ads").remove()""", google_top_ads)
+        except Exception: pass
 
-footer = driver.find_element(By.ID,"footer")
-driver.execute_script("""document.getElementById("footer").remove()""", footer)
+        footer = self.driver.find_element(By.ID,"footer")
+        self.driver.execute_script("""document.getElementById("footer").remove()""", footer)
 
-left = driver.find_element(By.CLASS_NAME,"mui-col-md-3")
-driver.execute_script("""document.getElementsByClassName("mui-col-md-3")[0].remove()""", left)
+        left = self.driver.find_element(By.CLASS_NAME,"mui-col-md-3")
+        self.driver.execute_script("""document.getElementsByClassName("mui-col-md-3")[0].remove()""", left)
 
-    
-fullWidth = driver.find_element(By.CLASS_NAME,"mui-col-md-6")
-driver.execute_script("""document.getElementsByClassName("mui-col-md-6")[0].setAttribute("class","mui-col-md-12")""", fullWidth)
+            
+        fullWidth = self.driver.find_element(By.CLASS_NAME,"mui-col-md-6")
+        self.driver.execute_script("""document.getElementsByClassName("mui-col-md-6")[0].setAttribute("class","mui-col-md-12")""", fullWidth)
 
 
 
-try:
-    tut_menu = driver.find_element(By.CLASS_NAME,"tutorial-menu")
-    driver.execute_script("""document.getElementsByClassName("tutorial-menu")[0].remove()""", tut_menu)
-except Exception: pass
+        try:
+            tut_menu = self.driver.find_element(By.CLASS_NAME,"tutorial-menu")
+            self.driver.execute_script("""document.getElementsByClassName("tutorial-menu")[0].remove()""", tut_menu)
+        except Exception: pass
 
-try:
-    pageBtn = driver.find_element(By.CLASS_NAME,"mui-container-fluid")
-    driver.execute_script("""document.getElementsByClassName("mui-container-fluid")[1].remove()""", pageBtn)
-except Exception: pass
+        try:
+            pageBtn = self.driver.find_element(By.CLASS_NAME,"mui-container-fluid")
+            self.driver.execute_script("""document.getElementsByClassName("mui-container-fluid")[1].remove()""", pageBtn)
+        except Exception: pass
 
+
+tp = Tpoint()
+tp.PageMaker()
 
 '''
 mui-col-md-6 tutorial-content
@@ -66,7 +72,7 @@ document.getElementsByClassName("mui-col-md-6")[0].setAttribute("class","mui-col
 document.getElementsByClassName("tutorial-content")[0]
 
 ebooks_grid
-alLinks = driver.find_elements_by_xpath("//a[@href]")
+alLinks = self.driver.find_elements_by_xpath("//a[@href]")
 
 VALID_LINKS = []
 
